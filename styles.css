@@ -4,7 +4,12 @@ body {
   padding: 0;
   background: #fdfdfd;
   color: #333;
-  transition: background 0.3s ease, color 0.3s ease;
+  transition: background-color 0.5s ease, color 0.5s ease, opacity 1s ease;
+  opacity: 0;
+}
+
+body.loaded {
+  opacity: 1;
 }
 
 header {
@@ -73,6 +78,7 @@ input, textarea, button {
   padding: 0.75rem;
   font-size: 1rem;
   border: 1px solid #ccc;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
 }
 
 button {
@@ -80,6 +86,12 @@ button {
   color: white;
   border: none;
   cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+  transform: scale(1.05);
+  background: #2c2c3f;
 }
 
 footer {
@@ -117,7 +129,7 @@ footer {
 /* Fade-in Animation */
 section {
   opacity: 0;
-  transform: translateY(20px);
+  transform: translateY(30px);
   transition: opacity 0.8s ease, transform 0.8s ease;
 }
 

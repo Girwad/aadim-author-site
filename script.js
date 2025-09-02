@@ -4,6 +4,11 @@ const toggleDarkMode = () => {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
+  // Smooth page load
+  window.addEventListener('load', () => {
+    document.body.classList.add('loaded');
+  });
+
   // Add dark mode button
   const header = document.querySelector('header');
   const toggleBtn = document.createElement('button');
@@ -12,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
   toggleBtn.onclick = toggleDarkMode;
   header.appendChild(toggleBtn);
 
-  // Animate sections on scroll
+  // Animate sections on scroll with stagger
   const sections = document.querySelectorAll('section');
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
@@ -22,7 +27,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }, { threshold: 0.2 });
 
-  sections.forEach(section => observer.observe(section));
+  sections.forEach((section, index) => {
+    section.style.transitionDelay = `${index * 0.2}s`;
+    observer.observe(section);
+  });
 
   // Form validation feedback
   const forms = document.querySelectorAll('form');
